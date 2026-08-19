@@ -1,0 +1,62 @@
+@using WeatherForecast.Server.Components.Modal
+@inherits WeatherEntriesListComponent;
+@attribute [StreamRendering]
+@if (_entries != null)
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>День</th>
+            <th aria-label="Температура (C) Макс">Температура (C) Макс</th>
+            <th aria-label="Температура (C) Мин">Температура (C) Мин</th>
+            <th aria-label="Действия">Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var forecast in _entries)
+        {
+            <tr>
+                <td>@forecast.Date.ToString("d")</td>
+                <td>@forecast.MaxTempC</td>
+                <td>@forecast.MinTempC</td>
+                <td>
+                    <button type="button" class="btn btn-primary" @onclick="() => DisplayHours(forecast)">
+                        Часы
+                    </button>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    @if (_selectedItem != null)
+    {
+        <ModalComponent Display="HoursVisible">
+            <Title>@_selectedItem.Date.ToString("d")</Title>
+            <Body>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Час</th>
+                    <th aria-label="Температура (C) Макс">Температура (C)</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach (var hour in _selectedItem.Hourly)
+                {
+                    <tr>
+                        <td>@hour.Time.ToString("t")</td>
+                        <td>@hour.TempC</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            </Body>
+        </ModalComponent>
+    }
+}
+else
+{
+    <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+}

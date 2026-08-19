@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Commands", "WeatherForecast.Commands\WeatherForecast.Commands.csproj", "{B40A4EE0-A37C-4C42-9A8D-E393570AAFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Server", "WeatherForecast.Server\WeatherForecast.Server.csproj", "{6F5DC305-6BE3-41D0-BBCE-D129C48771D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Models", "WeatherForecast.Models\WeatherForecast.Models.csproj", "{CBA055F3-86EC-4645-A640-BF35110B82DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Abstractions", "WeatherForecast.Abstractions\WeatherForecast.Abstractions.csproj", "{6C2A7B30-3C42-4C83-99D6-9D2163547081}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B40A4EE0-A37C-4C42-9A8D-E393570AAFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B40A4EE0-A37C-4C42-9A8D-E393570AAFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B40A4EE0-A37C-4C42-9A8D-E393570AAFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B40A4EE0-A37C-4C42-9A8D-E393570AAFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F5DC305-6BE3-41D0-BBCE-D129C48771D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F5DC305-6BE3-41D0-BBCE-D129C48771D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F5DC305-6BE3-41D0-BBCE-D129C48771D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F5DC305-6BE3-41D0-BBCE-D129C48771D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBA055F3-86EC-4645-A640-BF35110B82DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBA055F3-86EC-4645-A640-BF35110B82DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBA055F3-86EC-4645-A640-BF35110B82DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBA055F3-86EC-4645-A640-BF35110B82DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
