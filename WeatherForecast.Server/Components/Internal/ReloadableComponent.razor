@@ -1,0 +1,13 @@
+@inherits ReloadableComponentBase;
+
+<ErrorBoundary @ref="errorBoundary">
+    <ChildContent>
+        @RenderComponent
+    </ChildContent>
+    <ErrorContent Context="exception">
+        <div class="alert alert-danger m-3">
+            <h5>Произошла ошибка</h5>
+            <button class="btn btn-sm btn-danger" @onclick="ReloadComponent">Перезагрузить</button>
+        </div>
+    </ErrorContent>
+</ErrorBoundary>
