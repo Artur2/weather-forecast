@@ -13,17 +13,15 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Services.AddRazorComponents()
-            .AddInteractiveServerComponents();
-        builder.Services.AddHttpClient();
-        /* Можно использовать user_secrets или vault в случаях с распределенными настройками */
         builder.Configuration.AddJsonFile("defaults.json");
         builder.Configuration.AddJsonFile("weather_forecast.json");
         builder.Services.Configure<Defaults>(builder.Configuration.GetSection("defaults"));
         builder.Services.Configure<WeatherForecastDefaults>(builder.Configuration.GetSection("weather_forecast"));
-        builder.Services.AddTransient<IWeatherForecastLoader, WeatherForecastLoader>();
-        builder.Services.AddMediatR((cfg) =>
-            cfg.RegisterServicesFromAssembly(typeof(GetWeatherForecastCommand).Assembly));
+        builder.Services.AddRazorComponents()
+            .AddInteractiveServerComponents();
+        builder.Services.AddHttpClient();
+
+        ServicesConfiguration.ConfigureServices(builder.Services);
 
         var app = builder.Build();
 

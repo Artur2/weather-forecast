@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Models", "W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Abstractions", "WeatherForecast.Abstractions\WeatherForecast.Abstractions.csproj", "{6C2A7B30-3C42-4C83-99D6-9D2163547081}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherForecast.Server.Tests", "WeatherForecast.Server.Tests\WeatherForecast.Server.Tests.csproj", "{B7023795-D72A-45C2-97D3-2F9611C1A861}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C2A7B30-3C42-4C83-99D6-9D2163547081}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7023795-D72A-45C2-97D3-2F9611C1A861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7023795-D72A-45C2-97D3-2F9611C1A861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7023795-D72A-45C2-97D3-2F9611C1A861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7023795-D72A-45C2-97D3-2F9611C1A861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
