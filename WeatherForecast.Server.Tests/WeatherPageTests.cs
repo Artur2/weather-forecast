@@ -38,15 +38,12 @@ public class WeatherPageTests : BunitContext
         Assert.NotNull(modal);
 
         var tds = modal.FindAll("td");
-        var display = false;
         foreach (var i in Enumerable.Range(0, 23))
         {
             var time = $"{i:00}:00";
 
-            display |= tds.Any(td => td.InnerHtml == time);
+            Assert.Contains(tds, (td) => td.InnerHtml == time);
         }
-        
-        Assert.True(display);
     }
 
     [Fact]
@@ -70,7 +67,7 @@ public class WeatherPageTests : BunitContext
 
         var closeButton = modal.Find("button");
         await closeButton.ClickAsync();
-        
+
         Assert.Contains("display: none", modal.Markup);
         Assert.Equal(2, modal.RenderCount); // Fired event of StateHasChanged
     }
