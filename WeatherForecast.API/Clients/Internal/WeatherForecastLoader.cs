@@ -13,7 +13,7 @@ public class WeatherForecastLoader(IOptions<WeatherForecastDefaults> defaults, I
 {
     private readonly WeatherForecastDefaults _defaults = defaults.Value;
 
-    public async Task<Models.WeatherForecastEntry[]> LoadAsync(float latitude, float longitude, int days,
+    public async Task<WeatherForecastEntry[]> LoadAsync(float latitude, float longitude, int days,
         CancellationToken cancellationToken)
     {
         var queryParamsBuilder = new QueryBuilder([
@@ -30,18 +30,19 @@ public class WeatherForecastLoader(IOptions<WeatherForecastDefaults> defaults, I
 
         foreach (var forecastDay in response.Forecast.Days)
         {
+            // Google требует использование дат в UTC
             forecastDay.Date = DateTime.SpecifyKind(forecastDay.Date, DateTimeKind.Utc);
         }
 
         return response.Forecast.Days
-            .Select(x => new Models.WeatherForecastEntry(
+            .Select(x => new WeatherForecastEntry(
                 x.Day.MaxTempC,
                 x.Day.MinTempC,
                 x.Date,
                 x.Hours.Select(h =>
                 {
                     var parsedDate = DateTime.ParseExact(h.Time, "yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture);
-                    return new Models.WeatherForecastHourly()
+                    return new WeatherForecastHourly()
                     {
                         TempC = h.TempC,
                         Time = parsedDate.TimeOfDay
