@@ -28,6 +28,7 @@ public class WeatherEntriesListComponent : ComponentBase
     protected override async Task OnInitializedAsync()
     {
         var client = Factory.Create();
+        // TODO: Automapper
         var response = await client.GetWeatherForecastAsync(new API.WeatherForecastRequest
         {
             Latitude = Defaults.Value.Latitude,
