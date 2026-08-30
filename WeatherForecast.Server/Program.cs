@@ -1,7 +1,4 @@
-using WeatherForecast.Abstractions;
-using WeatherForecast.Commands;
 using WeatherForecast.Server.Components;
-using WeatherForecast.Server.Internal;
 using WeatherForecast.Server.Options;
 
 namespace WeatherForecast.Server;
@@ -20,6 +17,7 @@ public class Program
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
         builder.Services.AddHttpClient();
+        builder.Services.AddLogging();
 
         ServicesConfiguration.ConfigureServices(builder.Services);
 

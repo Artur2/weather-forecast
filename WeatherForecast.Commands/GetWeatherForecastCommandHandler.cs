@@ -4,7 +4,8 @@ using WeatherForecast.Models;
 
 namespace WeatherForecast.Commands;
 
-public class GetWeatherForecastCommandHandler(IWeatherForecastLoader weatherForecastLoader) : IRequestHandler<GetWeatherForecastCommand, WeatherForecastEntry[]>
+public class GetWeatherForecastCommandHandler(IWeatherForecastLoader weatherForecastLoader)
+: IRequestHandler<GetWeatherForecastCommand, WeatherForecastEntry[]>
 {
     public Task<WeatherForecastEntry[]> Handle(GetWeatherForecastCommand request, CancellationToken cancellationToken)
     {
