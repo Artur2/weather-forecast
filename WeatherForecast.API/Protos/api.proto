@@ -11,7 +11,7 @@ service ApiService {
 
 message WeatherForecastRequest {
   float Latitude = 1;
-  float Longitued = 2;
+  float Longitude = 2;
   int32 Days = 3;
 }
 

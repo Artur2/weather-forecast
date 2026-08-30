@@ -31,7 +31,7 @@ public class WeatherEntriesListComponent : ComponentBase
         var response = await client.GetWeatherForecastAsync(new API.WeatherForecastRequest
         {
             Latitude = Defaults.Value.Latitude,
-            Longitued = Defaults.Value.Longitude,
+            Longitude = Defaults.Value.Longitude,
             Days = Defaults.Value.Days
         });
 

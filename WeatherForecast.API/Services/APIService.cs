@@ -11,7 +11,7 @@ public class APIService(IMediator mediator) : ApiService.ApiServiceBase
 {
     public override async Task<WeatherForecastResponse> GetWeatherForecast(WeatherForecastRequest request, ServerCallContext context)
     {
-        var result = await mediator.Send(new GetWeatherForecastCommand(request.Latitude, request.Longitued, request.Days));
+        var result = await mediator.Send(new GetWeatherForecastCommand(request.Latitude, request.Longitude, request.Days));
         return new WeatherForecastResponse
         {
             Entries = {
