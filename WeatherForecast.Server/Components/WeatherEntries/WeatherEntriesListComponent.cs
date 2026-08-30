@@ -1,7 +1,5 @@
-using MediatR;
 using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
-using WeatherForecast.Commands;
 using WeatherForecast.Models;
 using WeatherForecast.Server.Options;
 
@@ -9,14 +7,16 @@ namespace WeatherForecast.Server.Components;
 
 public class WeatherEntriesListComponent : ComponentBase
 {
-    [Inject] public IOptions<Defaults> Defaults { get; set; }
+    [Inject]
+    protected IOptions<Defaults> Defaults { get; set; }
 
-    [Inject] public IMediator Mediator { get; set; }
+    [Inject]
+    protected APIClientFactory Factory { get; set; }
 
     protected WeatherForecastEntry[]? _entries;
 
     protected WeatherForecastEntry? _selectedItem;
-    
+
     protected bool HoursVisible { get; set; }
 
     protected void DisplayHours(WeatherForecastEntry indexSelected)
@@ -27,10 +27,21 @@ public class WeatherEntriesListComponent : ComponentBase
 
     protected override async Task OnInitializedAsync()
     {
-        _entries = await Mediator.Send(
-            new GetWeatherForecastCommand(
-                Defaults.Value.Latitude,
-                Defaults.Value.Longitude,
-                Defaults.Value.Days));
+        var client = Factory.Create();
+        var response = await client.GetWeatherForecastAsync(new API.WeatherForecastRequest
+        {
+            Latitude = Defaults.Value.Latitude,
+            Longitued = Defaults.Value.Longitude,
+            Days = Defaults.Value.Days
+        });
+
+        _entries = response.Entries.Select(x =>
+        new WeatherForecastEntry(x.MaxTempC, x.MinTempC, x.Date.ToDateTime(),
+            x.Hours.Select(h => new WeatherForecastHourly
+            {
+                Time = h.Time.ToTimeSpan(),
+                TempC = h.TempC
+            }).ToArray())
+        ).ToArray();
     }
 }

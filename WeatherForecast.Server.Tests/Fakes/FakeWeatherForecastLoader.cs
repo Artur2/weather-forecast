@@ -13,19 +13,19 @@ public class FakeWeatherForecastLoader : IWeatherForecastLoader
             new WeatherForecastEntry(1, 2, DateTime.UtcNow, Enumerable.Range(0, 23)
                 .Select(x => new WeatherForecastHourly()
                 {
-                    TempC = x, Time = DateTime.UtcNow.Date.AddHours(x)
+                    TempC = x, Time = DateTime.UtcNow.Date.AddHours(x).TimeOfDay
                 })
                 .ToArray()),
             new WeatherForecastEntry(1, 2, DateTime.UtcNow.AddDays(1), Enumerable.Range(0, 23)
                 .Select(x => new WeatherForecastHourly()
                 {
-                    TempC = x, Time = DateTime.UtcNow.AddDays(1).Date.AddHours(x)
+                    TempC = x, Time = DateTime.UtcNow.AddDays(1).Date.AddHours(x).TimeOfDay
                 })
                 .ToArray()),
             new WeatherForecastEntry(1, 2, DateTime.UtcNow.AddDays(2), Enumerable.Range(0, 23)
                 .Select(x => new WeatherForecastHourly()
                 {
-                    TempC = x, Time = DateTime.UtcNow.AddDays(2).Date.AddHours(x)
+                    TempC = x, Time = DateTime.UtcNow.AddDays(2).Date.AddHours(x).TimeOfDay
                 })
                 .ToArray()),
         });

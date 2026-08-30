@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WeatherForecast.Abstractions\WeatherForecast.Abstractions.csproj" />
+    <ProjectReference Include="..\WeatherForecast.Models\WeatherForecast.Models.csproj" />
+    <ProjectReference Include="..\WeatherForecast.Commands\WeatherForecast.Commands.csproj" />
+    <ProjectReference Include="..\WeatherForecast.Shared\WeatherForecast.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="2.83.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.83.0" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
+    <PackageReference Include="Refit" Version="15.2.0" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="15.2.0" />
+    <PackageReference Include="MediatR" Version="14.2.0" />
+    <PackageReference Include="Refit.Reflection" Version="15.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="weather_forecast.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\api.proto" GrpcServices="Server" />
+  </ItemGroup>
+
+</Project>

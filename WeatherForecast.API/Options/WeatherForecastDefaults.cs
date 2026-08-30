@@ -1,4 +1,4 @@
-namespace WeatherForecast.Server.Options;
+namespace WeatherForecast.API.Options;
 
 public class WeatherForecastDefaults
 {

@@ -1,0 +1,32 @@
+syntax = "proto3";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+// Change this to match your project's actual namespace
+option csharp_namespace = "WeatherForecast.API";
+
+service ApiService {
+    rpc GetWeatherForecast(WeatherForecastRequest) returns (WeatherForecastResponse);
+}
+
+message WeatherForecastRequest {
+  float Latitude = 1;
+  float Longitued = 2;
+  int32 Days = 3;
+}
+
+message WeatherForecastResponse {
+  repeated WeatherForecastEntryResponse entries = 1;
+}
+
+message WeatherForecastEntryResponse {
+  float MaxTempC = 1;
+  float MinTempC = 2;
+  google.protobuf.Timestamp Date = 3;
+  repeated WeatherForecastHourlyResponse Hours = 4;
+}
+
+message WeatherForecastHourlyResponse {
+    google.protobuf.Duration Time = 1;
+    float TempC = 2;
+}

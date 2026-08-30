@@ -1,6 +1,6 @@
 {
   "weather_forecast": {
-    "host": "api.weatherapi.com",
+    "host": "https://api.weatherapi.com",
     "path": "/v1/forecast.json",
     "apiKey": "fa8b3df74d4042b9aa7135114252304"
   }

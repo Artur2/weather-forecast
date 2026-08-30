@@ -2,7 +2,7 @@ namespace WeatherForecast.Models;
 
 public struct WeatherForecastHourly
 {
-    public DateTime Time { get; init; }
+    public TimeSpan Time { get; init; }
     
     public float TempC { get; init; }
 }

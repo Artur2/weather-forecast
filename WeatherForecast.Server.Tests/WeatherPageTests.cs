@@ -9,9 +9,6 @@ public class WeatherPageTests : BunitContext
     [Fact]
     public void Should_Display_Daily_Forecasts()
     {
-        ServicesConfiguration.ConfigureServices(Services);
-        TestsServicesConfiguration.ConfigureServices(Services);
-
         var component = Render<WeatherPage>();
 
         var forecastsTable = component.Find(".table");
@@ -21,9 +18,6 @@ public class WeatherPageTests : BunitContext
     [Fact]
     public async Task Should_Display_Hourly_Forecast()
     {
-        ServicesConfiguration.ConfigureServices(Services);
-        TestsServicesConfiguration.ConfigureServices(Services);
-
         var component = Render<WeatherPage>();
 
         var forecastsTable = component.Find(".table");
@@ -49,9 +43,6 @@ public class WeatherPageTests : BunitContext
     [Fact]
     public async Task Should_Hide_Modal_On_Close_Click()
     {
-        ServicesConfiguration.ConfigureServices(Services);
-        TestsServicesConfiguration.ConfigureServices(Services);
-
         var component = Render<WeatherPage>();
 
         var forecastsTable = component.Find(".table");

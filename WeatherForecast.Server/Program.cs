@@ -10,16 +10,15 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
-        builder.Configuration.AddJsonFile("defaults.json");
-        builder.Configuration.AddJsonFile("weather_forecast.json");
-        builder.Services.Configure<Defaults>(builder.Configuration.GetSection("defaults"));
-        builder.Services.Configure<WeatherForecastDefaults>(builder.Configuration.GetSection("weather_forecast"));
         builder.Services.AddRazorComponents()
             .AddInteractiveServerComponents();
         builder.Services.AddHttpClient();
         builder.Services.AddLogging();
-
-        ServicesConfiguration.ConfigureServices(builder.Services);
+        builder.Services.AddTransient<APIClientFactory>();
+        builder.Configuration.AddJsonFile("defaults.json");
+        builder.Configuration.AddJsonFile("grpc_options.json");
+        builder.Services.Configure<Defaults>(builder.Configuration.GetSection("defaults"));
+        builder.Services.Configure<GrpcOptions>(builder.Configuration.GetSection("grpc_options"));
 
         var app = builder.Build();
 

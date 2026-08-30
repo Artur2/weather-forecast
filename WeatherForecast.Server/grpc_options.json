@@ -1,0 +1,5 @@
+{
+    "grpc_options": {
+        "apiHost": "http://localhost:5292"
+    }
+}

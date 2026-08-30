@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace WeatherForecast.Server.Internal.Dtos;
+namespace WeatherForecast.API.Internal.Dtos;
 
 // Лучше конечно automapper для всего этого дела
 public class WeatherForecastResponse
