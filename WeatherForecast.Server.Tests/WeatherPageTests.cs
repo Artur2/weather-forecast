@@ -9,6 +9,7 @@ public class WeatherPageTests : BunitContext
     [Fact]
     public void Should_Display_Daily_Forecasts()
     {
+        Mocks.ConfigureClientMock(Services);
         var component = Render<WeatherPage>();
 
         var forecastsTable = component.Find(".table");
@@ -18,6 +19,7 @@ public class WeatherPageTests : BunitContext
     [Fact]
     public async Task Should_Display_Hourly_Forecast()
     {
+        Mocks.ConfigureClientMock(Services);
         var component = Render<WeatherPage>();
 
         var forecastsTable = component.Find(".table");
@@ -31,10 +33,10 @@ public class WeatherPageTests : BunitContext
         var modal = component.FindComponent<ModalComponent>();
         Assert.NotNull(modal);
 
-        var tds = modal.FindAll("td");
+        var tds = modal.FindAll("td.time");
         foreach (var i in Enumerable.Range(0, 23))
         {
-            var time = $"{i:00}:00";
+            var time = $"{i:00}:00:00";
 
             Assert.Contains(tds, (td) => td.InnerHtml == time);
         }
@@ -43,6 +45,7 @@ public class WeatherPageTests : BunitContext
     [Fact]
     public async Task Should_Hide_Modal_On_Close_Click()
     {
+        Mocks.ConfigureClientMock(Services);
         var component = Render<WeatherPage>();
 
         var forecastsTable = component.Find(".table");

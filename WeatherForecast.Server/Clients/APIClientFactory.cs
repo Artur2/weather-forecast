@@ -3,11 +3,22 @@ using Grpc.Net.Client;
 using Microsoft.Extensions.Options;
 using WeatherForecast.API;
 
-public class APIClientFactory(IOptions<GrpcOptions> options)
+public class APIClientFactory
 {
-    public ApiService.ApiServiceClient Create()
+    private readonly IOptions<GrpcOptions> _options;
+
+    public APIClientFactory()
     {
-        var host = options.Value.ApiHost;
+    }
+    
+    public APIClientFactory(IOptions<GrpcOptions> options)
+    {
+        _options = options;
+    }
+    
+    public virtual ApiService.ApiServiceClient Create()
+    {
+        var host = _options.Value.ApiHost;
         var channel = GrpcChannel.ForAddress(host);
         var client = new ApiService.ApiServiceClient(channel);
 

@@ -44,7 +44,7 @@
                 @foreach (var hour in _selectedItem.Hourly)
                 {
                     <tr>
-                        <td>@hour.Time.ToString("t")</td>
+                        <td class="time">@hour.Time.ToString("t")</td>
                         <td>@hour.TempC</td>
                     </tr>
                 }

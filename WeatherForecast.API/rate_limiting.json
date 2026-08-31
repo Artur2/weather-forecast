@@ -1,0 +1,7 @@
+{
+  "rate_limiting": {
+    "queueLimit": 10,
+    "permitLimit": 10,
+    "window": "00:00:01"
+  }
+}

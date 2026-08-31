@@ -1,0 +1,6 @@
+{
+  "weather_retry_policy" : {
+    "retryAttempts": 3,
+    "multiplication": 2
+  }
+}

@@ -4,11 +4,15 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 using WeatherForecast.Abstractions;
 using WeatherForecast.API.Options;
+using WeatherForecast.API.Policies;
 using WeatherForecast.Models;
 
 namespace WeatherForecast.API.Internal;
 
-public class WeatherForecastLoader(IOptions<WeatherForecastDefaults> defaults, IWeatherAPI weatherAPI)
+public class WeatherForecastLoader(
+    IOptions<WeatherForecastDefaults> defaults,
+    IWeatherAPI weatherAPI,
+    WeatherApiRetryPolicy retryPolicy)
     : IWeatherForecastLoader
 {
     private readonly WeatherForecastDefaults _defaults = defaults.Value;
@@ -21,12 +25,16 @@ public class WeatherForecastLoader(IOptions<WeatherForecastDefaults> defaults, I
             new KeyValuePair<string, string>("q", new StringValues([latitude.ToString(), longitude.ToString()])),
             new KeyValuePair<string, string>("days", days.ToString())
         ]);
-        var response = await weatherAPI.GetWeatherForecast(new WeatherAPIQueryParams
-        {
-            Key = defaults.Value.ApiKey,
-            Days = days.ToString(),
-            Query = queryParamsBuilder.ToString()
-        });
+
+        var policy = retryPolicy.Create();
+
+        var response = await policy.ExecuteAsync(async () => await weatherAPI.GetWeatherForecast(
+            new WeatherAPIQueryParams
+            {
+                Key = defaults.Value.ApiKey,
+                Days = days.ToString(),
+                Query = queryParamsBuilder.ToString()
+            }));
 
         foreach (var forecastDay in response.Forecast.Days)
         {

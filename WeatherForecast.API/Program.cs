@@ -11,7 +11,12 @@ public class Program
 
         // Add services to the container.
         builder.Configuration.AddJsonFile("weather_forecast.json");
+        builder.Configuration.AddJsonFile("rate_limiting.json");
+        builder.Configuration.AddJsonFile("weather_retry_policy.json");
         builder.Services.Configure<WeatherForecastDefaults>(builder.Configuration.GetSection("weather_forecast"));
+        builder.Services.Configure<RateLimitingDefaults>(builder.Configuration.GetSection("rate_limiting"));
+        builder.Services.Configure<WeatherRetryPolicyDefaults>(builder.Configuration.GetSection("weather_retry_policy"));
+        
         ServicesConfiguration.ConfigureServices(builder.Services);
     
         var app = builder.Build();
